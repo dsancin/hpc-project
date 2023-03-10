@@ -256,7 +256,7 @@ int main(int argc, char **argv){
          save_name(grid, rows, cols, step); 
        }
      }
-     printf("static evolution took %f", MPI_Wtime()-t_start);     
+     printf("ordered evolution took %f", MPI_Wtime()-t_start);     
      //free allocated memory
      free(grid);
      free(grid_ghost);
