@@ -89,7 +89,7 @@ void * generate_initial(int rows, int cols){
   cImage= (char*) calloc(rows*cols, sizeof(char));
   
   int id=0;
-  srand(time(null));
+  srand(time(NULL));
   for (int i=0; i<rows; i++){
     for(int j=0; j<cols; j++){
       cImage[id++]=rand()%2==0 ? (unsigned char) ALIVE : (unsigned char) DEAD;
