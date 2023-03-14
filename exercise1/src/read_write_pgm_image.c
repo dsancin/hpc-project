@@ -89,14 +89,10 @@ void * generate_initial(int rows, int cols){
   cImage= (char*) calloc(rows*cols, sizeof(char));
   
   int id=0;
-  #pragma omp parallel  private(seed)
-  {
-    seed=omp_get_thread_num();
-    #pragma omp parallel for firstprivate(id)
-    for (int i=0; i<rows; i++){
-      for(int j=0; j<cols; j++){
-        cImage[id++]=rand()%2==0 ? (unsigned char) ALIVE : (unsigned char) DEAD;
-      }
+  srand(time(null));
+  for (int i=0; i<rows; i++){
+    for(int j=0; j<cols; j++){
+      cImage[id++]=rand()%2==0 ? (unsigned char) ALIVE : (unsigned char) DEAD;
     }
   }
   ptr=(void*)cImage;   
