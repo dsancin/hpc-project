@@ -38,8 +38,8 @@ void compute_ghost_rows(int *grid, int rows, int cols,  int rows_ghost, int cols
 int alive_neigh(int *grid, int i, int j, int cols){
   //this compute the sum of the elements of all neighbouring cells
   int neighbours=grid[(i-1)*cols+(j-1)] + grid[(i-1)*cols+j] + grid[(i-1)*cols+(j+1)]+       
-                grid[i*cols+(j-1)]                          + grid[i*cols+(j+1)]+                 
-                grid[(i+1)*cols+(j-1)] + grid[(i+1)*cols+j] + grid[(i+1)*cols+(j+1)];          
+                 grid[i*cols+(j-1)]                          + grid[i*cols+(j+1)]+                 
+                 grid[(i+1)*cols+(j-1)] + grid[(i+1)*cols+j] + grid[(i+1)*cols+(j+1)];          
                         //i,j row/cols index  cols is length of row 
                 
                      
@@ -62,7 +62,7 @@ void static_evo(int *grid, int *grid_next, int rows, int cols){
         grid_next[i*cols+j]=DEAD;
       }
     }
-  }           
+  }          
 }         
 
 
@@ -73,19 +73,18 @@ void ordered_evo(int *grid_ghost, int rows_ghost, int cols_ghost, int rows, int 
       int count=alive_neigh(grid_ghost, i, j, cols_ghost);
       if (grid_ghost[i*cols_ghost+j]==ALIVE && (count==2 || count==3)){
         grid_ghost[i*cols_ghost+j]=ALIVE;
+        compute_ghost_rows(grid_ghost, rows, cols, rows_ghost, cols_ghost);
+        compute_ghost_cols(grid_ghost, rows_ghost, cols_ghost);                                
       }else if (grid_ghost[i*cols_ghost+j]==DEAD && count==3){           
         grid_ghost[i*cols_ghost+j]=ALIVE;
+        compute_ghost_rows(grid_ghost, rows, cols, rows_ghost, cols_ghost);
+        compute_ghost_cols(grid_ghost, rows_ghost, cols_ghost);                              
       }else{
         grid_ghost[i*cols_ghost+j]=DEAD;
-      }
-      if (j==cols_ghost-3){   //update ghost rows and columns before evolving last cell of a row (to update leftmost cell)
         compute_ghost_rows(grid_ghost, rows, cols, rows_ghost, cols_ghost);
-        compute_ghost_cols(grid_ghost, rows_ghost, cols_ghost);                        
+        compute_ghost_cols(grid_ghost, rows_ghost, cols_ghost);                             
       }
     }
-    //update ghost rows and columns at the end of the row
-    compute_ghost_rows(grid_ghost, rows, cols, rows_ghost, cols_ghost);
-    compute_ghost_cols(grid_ghost, rows_ghost, cols_ghost);                        
   }           
 }    
 
