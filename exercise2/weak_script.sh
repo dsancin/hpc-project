@@ -27,8 +27,8 @@ for i in {2000..20000..1000}
 do
    for j in {1..10}
    do
-       srun ./gemm_oblas.x $i $i $i >> weak_scalability/single/threads_spread_oblas.csv
-       srun ./gemm_mkl.x $i $i $i >> weak_scalability/single/threads_spread_mkl.csv
+       srun ./gemm_oblas.x $i $i $i >> weak_scalability/double/threads_spread_oblas.csv
+       srun ./gemm_mkl.x $i $i $i >> weak_scalability/double/threads_spread_mkl.csv
        echo
    done
    echo
