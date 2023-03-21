@@ -20,15 +20,15 @@ rm gemm_mkl.x
 srun -n 1 make cpu
 
 export OMP_NUM_THREADS=64
-export OMP_PLACES=sockets
+export OMP_PLACES=threads
 export OMP_PROC_BIND=close
 
 for i in {2000..20000..1000}
 do
    for j in {1..10}
    do
-       srun ./gemm_oblas.x $i $i $i >> weak_scalability/single/sockets_close_oblas.csv
-       srun ./gemm_mkl.x $i $i $i >> weak_scalability/single/sockets_close_mkl.csv
+       srun ./gemm_oblas.x $i $i $i >> weak_scalability/single/threads_close_oblas.csv
+       srun ./gemm_mkl.x $i $i $i >> weak_scalability/single/threads_close_mkl.csv
        echo
    done
    echo
