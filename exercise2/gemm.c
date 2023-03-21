@@ -27,13 +27,13 @@
 
 #ifdef USE_FLOAT
 #define MYFLOAT float
-#define DATATYPE printf(" Using float \n\n");
+#define DATATYPE printf("float, ");
 #define GEMMCPU cblas_sgemm
 #endif
 
 #ifdef USE_DOUBLE
-#define MYFLOAT double 
-#define DATATYPE printf(" Using double \n\n");
+#define MYFLOAT double
+#define DATATYPE printf("double, ");
 #define GEMMCPU cblas_dgemm
 #endif
 
@@ -71,7 +71,7 @@ int main(int argc, char** argv)
     else
     {
     printf( "Usage: %s M K N, the corresponding matrices will be  A(M,K) B(K,N) \n", argv[0]); 
-    return 0; 
+    return 0;
     }
 
     alpha = 1.0; beta = 0.0;
@@ -106,7 +106,8 @@ int main(int argc, char** argv)
     clock_gettime(CLOCK_MONOTONIC, &end);
     elapsed = (double)diff(begin,end).tv_sec + (double)diff(begin,end).tv_nsec / 1000000000.0;
     double gflops = 2.0 * m *n*k;
-    gflops = gflops/elapsed*1.0e-9; 
+    gflops = gflops/elapsed*1.0e-9;
+    DATATYPE
     printf("%d, %lf, %lf\n", m, elapsed, gflops);
 
 #ifdef PRINT
@@ -125,7 +126,7 @@ int main(int argc, char** argv)
       }
       printf ("\n");
     }
-    
+
     printf ("\n Top left corner of matrix C: \n");
     for (i=0; i<min(m,6); i++) {
       for (j=0; j<min(n,6); j++) {
