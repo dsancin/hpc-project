@@ -25,7 +25,7 @@ export OMP_PROC_BIND=close
 
 for i in {2000..20000..1000}
 do
-   for j in {1..5}
+   for j in {1..10}
    do
        srun ./gemm_oblas.x $i $i $i >> weak_scalability/single/cores_close_oblas.csv
        srun ./gemm_mkl.x $i $i $i >> weak_scalability/single/cores_close_mkl.csv
