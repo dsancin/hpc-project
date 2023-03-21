@@ -21,14 +21,14 @@ srun -n 1 make cpu
 
 export OMP_NUM_THREADS=64
 export OMP_PLACES=cores
-export OMP_PROC_BIND=close
+export OMP_PROC_BIND=spread
 
 for i in {2000..20000..1000}
 do
    for j in {1..10}
    do
-       srun ./gemm_oblas.x $i $i $i >> weak_scalability/double/cores_close_oblas.csv
-       srun ./gemm_mkl.x $i $i $i >> weak_scalability/double/cores_close_mkl.csv
+       srun ./gemm_oblas.x $i $i $i >> weak_scalability/double/cores_spread_oblas.csv
+       srun ./gemm_mkl.x $i $i $i >> weak_scalability/double/cores_spread_mkl.csv
        echo
    done
    echo
