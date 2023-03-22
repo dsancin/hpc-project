@@ -23,11 +23,11 @@ srun -n 1 make cpu
 export OMP_PLACES=sockets
 export OMP_PROC_BIND=close
 
-for i in {1, 2, 4, 6, 8, 12, 16, 24, 32, 48, 64}
+for i in [1, 2, 4, 6, 8, 12, 16, 24, 32, 48, 64]
 do
+   export OMP_NUM_THREADS=i
    for j in {1..5}
    do
-       export OMP_NUM_THREADS=i
        srun ./gemm_oblas.x 15000 15000 15000 >> strong_scalability/double/sockets_close_oblas.csv
        srun ./gemm_mkl.x 15000 15000 15000 >> strong_scalability/double/sockets_close_mkl.csv
        echo
