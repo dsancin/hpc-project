@@ -28,8 +28,8 @@ do
    for j in {1..5}
    do
        export OMP_NUM_THREADS=$i
-       srun ./gemm_oblas.x 15000 15000 15000 >> strong_scalability/single/sockets_spread_oblas.csv
-       srun ./gemm_mkl.x 15000 15000 15000 >> strong_scalability/single/sockets_spread_mkl.csv
+       srun ./gemm_oblas.x 15000 15000 15000 >> strong_scalability/double/sockets_spread_oblas.csv
+       srun ./gemm_mkl.x 15000 15000 15000 >> strong_scalability/double/sockets_spread_mkl.csv
        echo
    done
    echo
