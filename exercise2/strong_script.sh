@@ -24,11 +24,11 @@ for i in 1 2 4 6 8 12 16 24 32 48 64
 do
    export OMP_NUM_THREADS=$i
    export OMP_PLACES=sockets
-   export OMP_PROC_BIND=close
+   export OMP_PROC_BIND=spread
    for j in {1..5}
    do
-       srun ./gemm_oblas.x 15000 15000 15000 >> strong_scalability/double/sockets_close_oblas.csv
-       srun ./gemm_mkl.x 15000 15000 15000 >> strong_scalability/double/sockets_close_mkl.csv
+       srun ./gemm_oblas.x 15000 15000 15000 >> strong_scalability/double/sockets_spread_oblas.csv
+       srun ./gemm_mkl.x 15000 15000 15000 >> strong_scalability/double/sockets_spread_mkl.csv
        echo
    done
    echo
