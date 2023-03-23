@@ -27,8 +27,8 @@ do
    export OMP_PROC_BIND=close
    for j in {1..5}
    do
-       srun ./gemm_oblas.x 15000 15000 15000 >> strong_scalability/double/cores_close_oblas.csv
-       srun ./gemm_mkl.x 15000 15000 15000 >> strong_scalability/double/cores_close_mkl.csv
+       srun ./gemm_oblas.x 15000 15000 15000 >> strong_scalability/single/cores_close_oblas.csv
+       srun ./gemm_mkl.x 15000 15000 15000 >> strong_scalability/single/cores_close_mkl.csv
        echo
    done
    echo
