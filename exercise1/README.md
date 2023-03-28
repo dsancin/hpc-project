@@ -34,5 +34,5 @@ This will run the static evolution using two MPI processes. The initial.pgm file
 
 
 # Other files 
-The folder data contains the .csv files with the data collected, and the graphs folder contains the produced graphs and the code used to produce them (`graphs.html`)  
+The folder data contains the .csv files with the data collected, and the graphs folder contains the produced graphs and the code used to produce them (`graphs.ipynb`)  
 
