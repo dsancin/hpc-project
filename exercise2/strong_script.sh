@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=64
 #SBATCH --time=02:00:00
-#SBATCH --nodelist=epyc[002]
+#SBATCH --nodelist=epyc[005]
 
 module load architecture/AMD
 module load openBLAS/0.3.21-omp
